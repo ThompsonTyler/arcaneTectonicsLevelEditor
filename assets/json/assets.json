@@ -1,0 +1,2015 @@
+{
+    "textures": {
+        "earth1": {
+            "file":      "textures/earthtile1.png",
+            "wrapS":     "repeat",
+            "wrapT":     "repeat"
+        },
+        "earth2": {
+            "file":      "textures/earthtile2.png",
+            "wrapS":     "clamp",
+            "wrapT":     "clamp"
+        },
+        "cornell": {
+            "file":      "textures/cornell.png",
+            "minfilter": "linear",
+            "magfilter": "linear"
+        },
+        "redb": {
+            "file":      "textures/red.png",
+            "minfilter": "linear",
+            "magfilter": "linear"
+        },
+        "reds": {
+            "file":      "textures/red-small.png",
+            "minfilter": "linear",
+            "magfilter": "linear",
+            "wrapS":     "clamp",
+            "wrapT":     "clamp"
+        },
+        "play": {
+            "file":      "textures/play.png",
+            "wrapS":     "clamp",
+            "wrapT":     "clamp",
+            "minfilter": "linear",
+            "magfilter": "linear"
+        },
+        "bg": {
+            "file":      "textures/base.png",
+            "wrapS":     "clamp",
+            "wrapT":     "clamp",
+            "minfilter": "linear",
+            "magfilter": "linear"
+        },
+        "blank": {
+            "file":      "textures/100squareWhite.png",
+            "wrapS":     "clamp",
+            "wrapT":     "clamp",
+            "minfilter": "linear",
+            "magfilter": "linear"
+        },
+        "fip": {
+            "file":      "textures/fileInput.png",
+            "wrapS":     "clamp",
+            "wrapT":     "clamp",
+            "minfilter": "linear",
+            "magfilter": "linear"
+        }
+    },
+    "fonts": {
+        "felt": {
+            "file":     "fonts/MarkerFelt.ttf",
+            "size":     64
+        },
+        "mainFont40": {
+            "file":     "fonts/constanb.ttf",
+            "size":     40
+        },
+        "mainFont25": {
+            "file":     "fonts/constanb.ttf",
+            "size":     25
+        },
+        "mainFont20": {
+            "file":     "fonts/constanb.ttf",
+            "size":     20
+        },
+        "mainFont12": {
+            "file":     "fonts/constanb.ttf",
+            "size":     12
+        }
+    },
+    "scenes": {
+        "editor" : {
+            "comment" : "Main scene of level editor",
+            "type" : "Node",
+            "format" : {
+                "type" : "Anchored"
+            },
+            "children" : {
+                "fipImage"  : {
+                    "type"   : "Image",
+                    "format"    : {
+                        "type" : "Anchored"
+                    },
+                    "data"   : {
+                        "texture"  : "fip",
+                        "anchor"   : [0.5,0.5]
+                    },
+                    "layout" : {
+                        "x_anchor" : "center",
+                        "y_anchor" : "middle"
+                    }
+                },
+                "fileInput": {
+                    "type" : "TextField",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data" : {
+                        "font" : "mainFont40",
+                        "text" : "Input File Name",
+                        "foreground" : [59, 59, 59, 255],
+                        "halign" : "center",
+                        "valign" : "middle",
+                        "size" : [1000, 250]
+                    },
+                    "layout" : {
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0,
+                        "y_offset" : 0.4
+                    }
+                },
+                "levelHeight": {
+                    "type" : "TextField",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data" : {
+                        "font" : "mainFont25",
+                        "text" : "5",
+                        "foreground" : [59, 59, 59, 255],
+                        "halign" : "center",
+                        "valign" : "middle",
+                        "size" : [55, 26]
+                    },
+                    "layout" : {
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.091,
+                        "y_offset" : 0.113
+                    }
+                },
+                "levelWidth": {
+                    "type" : "TextField",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data" : {
+                        "font" : "mainFont25",
+                        "text" : "5",
+                        "foreground" : [59, 59, 59, 255],
+                        "halign" : "center",
+                        "valign" : "middle",
+                        "size" : [55, 26]
+                    },
+                    "layout" : {
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.091,
+                        "y_offset" : 0.0736
+                    }
+                },
+                "levelName": {
+                    "type" : "TextField",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data" : {
+                        "font" : "mainFont25",
+                        "text" : "Level_1",
+                        "foreground" : [59, 59, 59, 255],
+                        "halign" : "leftv",
+                        "valign" : "middle",
+                        "size" : [180, 26]
+                    },
+                    "layout" : {
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.0293,
+                        "y_offset" : 0.165
+                    }
+                },
+                "enemyName": {
+                    "type" : "TextField",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data" : {
+                        "font" : "mainFont25",
+                        "text" : "5",
+                        "foreground" : [59, 59, 59, 255],
+                        "halign" : "left",
+                        "valign" : "middle",
+                        "size" : [160, 26]
+                    },
+                    "layout" : {
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.824,
+                        "y_offset" : 0.875
+                    }
+                },
+                "addEnemy" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [120, 50]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.610,
+                        "y_offset" : 0.9222
+                    }
+                },
+                "saveBoard" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [150, 50]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.15625,
+                        "y_offset" : 0.9222
+                    }
+                },
+                "loadBoard" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [150, 50]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.3076,
+                        "y_offset" : 0.9222
+                    }
+                },
+                "buttonTemplate" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [196, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont20",
+                                        "text"       : "Enemy Teplate",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.249,
+                        "y_offset" : 0.2166
+                    }
+                },
+                "buttonTemplate2" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [196, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont20",
+                                        "text"       : "Enemy Teplate",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.249,
+                        "y_offset" : 0.1681
+                    }
+                },
+                "buttonTemplate3" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [196, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont20",
+                                        "text"       : "Enemy Teplate",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.249,
+                        "y_offset" : 0.11944
+                    }
+                },
+                "buttonTemplate4" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [196, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont20",
+                                        "text"       : "Enemy Teplate",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.249,
+                        "y_offset" : 0.07083
+                    }
+                },
+                "buttonTemplate5" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [196, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont20",
+                                        "text"       : "Enemy Teplate",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.249,
+                        "y_offset" : 0.022
+                    }
+                },
+                "minButton" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [20, 20]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.9629,
+                        "y_offset" : 0
+                    }
+                },
+                "minButton1" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [20, 20]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.9629,
+                        "y_offset" : 0
+                    }
+                },
+                "minButton2" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [20, 20]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.9629,
+                        "y_offset" : 0
+                    }
+                },
+                "minButton3" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [20, 20]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.9629,
+                        "y_offset" : 0
+                    }
+                },
+                "minButton4" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [20, 20]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.9629,
+                        "y_offset" : 0
+                    }
+                },
+                "minButton5" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [20, 20]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.9629,
+                        "y_offset" : 0
+                    }
+                },
+                "minButton6" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [20, 20]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.9629,
+                        "y_offset" : 0
+                    }
+                },
+                "minButton7" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [20, 20]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.9629,
+                        "y_offset" : 0
+                    }
+                },
+                "DumbMovement" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "DumbMovement",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.469,
+                        "y_offset" : 0.020833
+                    }
+                },
+                "SmartMovement" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "SmartMovement",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.469,
+                        "y_offset" : 0.06944
+                    }
+                },
+                "ImmobileMovement" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "ImmobileMovement",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.469,
+                        "y_offset" : 0.118055
+                    }
+                },
+                "TeleportMovement" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "TeleportMovement",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.469,
+                        "y_offset" : 0.1666
+                    }
+                },
+                "MeleeAttack" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "MeleeAttack",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.469,
+                        "y_offset" : 0.215277
+                    }
+                },
+                "RangeOrthoAttack" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "RangeOrthoAttack",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.6006,
+                        "y_offset" : 0.020833
+                    }
+                },
+                "RangeDiagAttack" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "RangeDiagAttack",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.6006,
+                        "y_offset" : 0.06944
+                    }
+                },
+                "SplashAttackMod" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "SplashAttackMod",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.6006,
+                        "y_offset" : 0.118055
+                    }
+                },
+                "DuplicationOnTurn" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "DuplicationOnTurn",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.6006,
+                        "y_offset" : 0.1666
+                    }
+                },
+                "TileMoveOnTurn" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "TileMoveOnTurn",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.6006,
+                        "y_offset" : 0.215277
+                    }
+                },
+                "Size" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "Size",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.7324,
+                        "y_offset" : 0.06944
+                    }
+                },
+                "Idle" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "Idle",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.7324,
+                        "y_offset" : 0.118055
+                    }
+                },
+                "NonIdle" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "NonIdle",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.7324,
+                        "y_offset" : 0.1666
+                    }
+                },
+                "ExplodeOnDeath" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "ExplodeOnDeath",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.7324,
+                        "y_offset" : 0.215277
+                    }
+                },
+                "WeaknessResist" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "WeaknessResist",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.864,
+                        "y_offset" : 0.020833
+                    }
+                },
+                "StrengthResist" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "StrengthResist",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.864,
+                        "y_offset" : 0.06944
+                    }
+                },
+                "ImmovablePlayerLimit" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "ImmovablePlayerLimit",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.864,
+                        "y_offset" : 0.118055
+                    }
+                },
+                "FlyPlayerLimit" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "FlyPlayerLimit",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.864,
+                        "y_offset" : 0.1666
+                    }
+                }
+            }
+        }
+    }
+}
+
