@@ -744,6 +744,19 @@ void ButtonScene::saveJson(std::string levelName) {
 	boardJson->appendChild("height", JsonValue::alloc((long)_board.height));
 	json->appendChild("size", boardJson);
 
+	std::shared_ptr<JsonValue> tilesJson = JsonValue::allocArray();
+	for (int x = 0; x < _board.width; x++) {
+		std::shared_ptr<JsonValue> subTilesJson = JsonValue::allocArray();
+		for (int y = 0; y < _board.height; y++) {
+			subTilesJson->insertChild(y, JsonValue::alloc((long)_board.tiles[x][y]));
+		}
+		tilesJson->insertChild(x, subTilesJson);
+	}
+	json->appendChild("tiles", tilesJson);
+
+
+
+
 	std::shared_ptr<JsonValue> enemiesJson = JsonValue::allocObject();
 	for (auto e = enemies.begin(); e != enemies.end(); e++) {
 		std::shared_ptr<JsonValue> enJson = JsonValue::allocObject();
@@ -830,6 +843,17 @@ void ButtonScene::loadJson(std::string levelName) {
 
 	std::shared_ptr<JsonValue> size = json->get("size");
 	_board.configure_size(size->getInt("width"), size->getInt("height"));
+
+	std::shared_ptr<JsonValue> tiles = json->get("tiles");
+	for (int x = 0; x < size->getInt("width"); x++) {
+		std::shared_ptr<JsonValue> singleRow = tiles->get(x);
+		std::vector<int> values = singleRow->asIntArray();
+		for (int y = 0; y < size->getInt("height"); y++) {
+			_board.tiles[x][y] = values[y];
+		}
+	}
+
+
 
 	std::shared_ptr<JsonValue> mika = json->get("mika");
 	Ally newMika;
