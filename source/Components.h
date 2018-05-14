@@ -132,8 +132,8 @@ struct SizeComponent : public Component {
 
 struct IdleComponent : public Component {
 	IdleComponent() : Component("Idle") {
-		const char* val = "textureKey";
-		std::pair<std::string, std::string> pair("string", "value");
+		const char* val = "textureKeys";
+		std::pair<std::string, std::string> pair("string", "enemy00_strip");
 		mapping[val] = pair;
 	};
 	std::string textureKey;

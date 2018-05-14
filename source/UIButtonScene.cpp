@@ -174,8 +174,8 @@ bool ButtonScene::init(const std::shared_ptr<AssetManager>& assets) {
 
 	saveButton->activate(80);
 	loadButton->activate(81);
-	randomizeButton->activate(82);
-	copyEnemyButton->activate(83);
+	randomizeButton->activate(9999);
+	copyEnemyButton->activate(10000);
 
 	_infoButtons.push_back(std::dynamic_pointer_cast<Button>(assets->get<Node>("editor_minButton")));
 	_infoButtons.push_back(std::dynamic_pointer_cast<Button>(assets->get<Node>("editor_minButton1")));

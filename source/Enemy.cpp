@@ -103,7 +103,13 @@ void Enemy::setupLabelFields(std::vector<std::shared_ptr<Label>>& labels, std::v
 					ownLabel->setText(c2.first, true);
 
 					ownField->setPosition(ownLabel->getPositionX() + ownLabel->getContentWidth() + 20, ownLabel->getPositionY() - 5);
-					ownField->setText(c2.second.second);
+					if (c2.second.second.size() > 4) {
+						ownField->setText(c2.second.second, true);
+					}
+					else {
+						ownField->setText(c2.second.second);
+					}
+					
 					ownField->setExitListener([=](const std::string& name, const std::string& current) {
 						if (c2.second.first.compare("int") == 0) {
 							std::istringstream ss(current);
