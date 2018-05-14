@@ -299,6 +299,72 @@
                         "y_offset" : 0.9222
                     }
                 },
+                "randomizeBoard" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [150, 50]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.45996,
+                        "y_offset" : 0.9222
+                    }
+                },
+                "copyEnemy" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size"     : [200, 60]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.795898,
+                        "y_offset" : 0.26666
+                    }
+                },
                 "buttonTemplate" : {
                     "type"   : "Button",
                     "format" : {
@@ -2006,6 +2072,65 @@
                         "y_anchor" : "bottom",
                         "x_offset" : 0.864,
                         "y_offset" : 0.1666
+                    }
+                },
+                "Rooting" : {
+                    "type"   : "Button",
+                    "format" : {
+                        "type" : "Absolute"
+                    },
+                    "data"   : {
+                        "anchor"   : [0, 0],
+                        "up" : {
+                            "type" : "Node",
+                            "format" : {
+                                "type" : "Anchored"
+                            },
+                            "data" : {
+                                "comment"  : "Without this size, the up button fills the screen (because that is default)",
+                                "size" : [125, 25]
+                            },
+                            "comment"  : "The children fit snug to the up button and do not need sizes",
+                            "children"  : {
+                                "img" : {
+                                    "type"   : "Image",
+                                    "data"   : {
+                                        "texture"  : "blank",
+                                        "anchor"   : [0.0, 0]
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                },
+                                "label" : {
+                                    "type"   : "Label",
+                                    "data"   : {
+                                        "font"       : "mainFont12",
+                                        "text"       : "Rooting",
+                                        "foreground" : [0,0,0,255],
+                                        "anchor"     : [0.5, 0.5],
+                                        "halign"     : "center",
+                                        "valign"     : "middle"
+                                    },
+                                    "layout" : {
+                                        "x_anchor" : "fill",
+                                        "y_anchor" : "fill"
+                                    }
+                                }
+                            },
+                            "layout" : {
+                                "x_anchor" : "fill",
+                                "y_anchor" : "fill"
+                            }
+                        }
+                    },
+                    "layout" : {
+                        "comment"  : "The offset is in percentages, not pixels",
+                        "x_anchor" : "left",
+                        "y_anchor" : "bottom",
+                        "x_offset" : 0.864,
+                        "y_offset" : 0.215277
                     }
                 }
             }

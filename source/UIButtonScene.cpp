@@ -16,6 +16,9 @@
 #include "ComponentType.h"
 #include <algorithm>
 #include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace cugl;
 
@@ -66,6 +69,7 @@ bool ButtonScene::init(const std::shared_ptr<AssetManager>& assets) {
 		componentNames.push_back("ImmovablePlayerLimit");
 		componentNames.push_back("FlyPlayerLimit");
 		componentNames.push_back("SplashAttackMod");
+		componentNames.push_back("Rooting");
 
 		typeLayout["DumbMovement"] = ecs::getComponentType<DumbMovementComponent>();
 		typeLayout["SmartMovement"] = ecs::getComponentType<SmartMovementComponent>();
@@ -85,6 +89,7 @@ bool ButtonScene::init(const std::shared_ptr<AssetManager>& assets) {
 		typeLayout["ImmovablePlayerLimit"] = ecs::getComponentType<ImmovablePlayerLimitComponent>();
 		typeLayout["FlyPlayerLimit"] = ecs::getComponentType<FlyPlayerLimitComponent>();
 		typeLayout["SplashAttackMod"] = ecs::getComponentType<SplashAttackModComponent>();
+		typeLayout["Rooting"] = ecs::getComponentType<RootingComponent>();
 
 		baseComponents["DumbMovement"] = std::make_shared<Component>(DumbMovementComponent());
 		baseComponents["SmartMovement"] = std::make_shared<Component>(SmartMovementComponent());
@@ -104,6 +109,7 @@ bool ButtonScene::init(const std::shared_ptr<AssetManager>& assets) {
 		baseComponents["ImmovablePlayerLimit"] = std::make_shared<Component>( ImmovablePlayerLimitComponent());
 		baseComponents["FlyPlayerLimit"] = std::make_shared<Component>( FlyPlayerLimitComponent());
 		baseComponents["SplashAttackMod"] = std::make_shared<Component>( SplashAttackModComponent());
+		baseComponents["Rooting"] = std::make_shared<Component>(RootingComponent());
 
 	}
 
@@ -132,6 +138,8 @@ bool ButtonScene::init(const std::shared_ptr<AssetManager>& assets) {
 
 	saveButton = std::dynamic_pointer_cast<Button>(assets->get<Node>("editor_saveBoard"));
 	loadButton = std::dynamic_pointer_cast<Button>(assets->get<Node>("editor_loadBoard"));
+	randomizeButton = std::dynamic_pointer_cast<Button>(assets->get<Node>("editor_randomizeBoard"));
+	copyEnemyButton = std::dynamic_pointer_cast<Button>(assets->get<Node>("editor_copyEnemy"));
 
 	saveButton->setListener([=](const std::string& name, bool down) {
 		if (down) {
@@ -145,8 +153,29 @@ bool ButtonScene::init(const std::shared_ptr<AssetManager>& assets) {
 		}
 	});
 
+	srand(time(NULL));
+
+	randomizeButton->setListener([=](const std::string &name, bool down) {
+		if (down) {
+			for (auto xVal = _board.tiles.begin(); xVal != _board.tiles.end(); xVal++) {
+				int currentXVal = xVal->first;
+				for (auto yVal = xVal->second.begin(); yVal != xVal->second.end(); yVal++) {
+					_board.tiles[currentXVal][yVal->first] = rand() % 6;
+				}
+			}
+		}
+	});
+
+	copyEnemyButton->setListener([=](const std::string& name, bool down) {
+		if (down) {
+			requestNewEnemy = true;
+		}
+	});
+
 	saveButton->activate(80);
 	loadButton->activate(81);
+	randomizeButton->activate(82);
+	copyEnemyButton->activate(83);
 
 	_infoButtons.push_back(std::dynamic_pointer_cast<Button>(assets->get<Node>("editor_minButton")));
 	_infoButtons.push_back(std::dynamic_pointer_cast<Button>(assets->get<Node>("editor_minButton1")));
@@ -553,6 +582,13 @@ void ButtonScene::draw(const std::shared_ptr<cugl::SpriteBatch>& batch) {
 }
 
 void ButtonScene::update(float timestep) {
+	if (requestNewEnemy) {
+		requestNewEnemy = false;
+		copyEnemy();
+	}
+
+
+
 	if (currentEnemy != -1 && !_enemyName->isActive()) {
 		_enemyName->activate(LISTENER_ID + 3);
 		_enemyName->setText(enemies[currentEnemy]->name);
@@ -984,4 +1020,41 @@ void ButtonScene::loadJson(std::string levelName) {
 
 	currentSaveLoad = false;
 	saveLoadClean = false;
+}
+
+void ButtonScene::copyEnemy() {
+	if (currentEnemy == -1) {
+		return;
+	}
+	Enemy newEnemy;
+	LocationComponent loc;
+	newEnemy.name = enemies[currentEnemy]->name;
+	auto comp = enemies[currentEnemy]->components;
+	for (auto c = comp.begin(); c != comp.end(); c++) {
+		std::string compName = (*c).second.getName();
+
+		if (compName.compare("Location") == 0) {
+			loc.mapping["x"].second = (*c).second.mapping["x"].second;
+			loc.mapping["y"].second = (*c).second.mapping["y"].second;
+			newEnemy.addComponent<LocationComponent>(loc);
+		}
+		else {
+			newEnemy.addComponent2(typeLayout[compName], *baseComponents[compName]);
+			Component newComponent = newEnemy.components[typeLayout[compName]];
+			auto selfComp = newComponent.mapping;
+			for (auto k = selfComp.begin(); k != selfComp.end(); k++) {
+				newComponent.mapping[(*k).first].second = (*c).second.mapping[(*k).first].second;
+			}
+
+			newEnemy.components[typeLayout[compName]] = newComponent;
+		}
+	}
+
+	newEnemy.needRedraw = true;
+
+	enemies.push_back(std::make_shared<Enemy>(newEnemy));
+	currentEnemy = enemies.size() - 1;
+
+	setupButtons();
+	computeLabels();
 }

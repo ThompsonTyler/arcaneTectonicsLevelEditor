@@ -135,28 +135,8 @@ struct IdleComponent : public Component {
 		const char* val = "textureKey";
 		std::pair<std::string, std::string> pair("string", "value");
 		mapping[val] = pair;
-
-		const char* val2 = "textureRows";
-		std::pair<std::string, std::string> pair2("int", "1");
-		mapping[val2] = pair2;
-
-		const char* val3 = "textureColumns";
-		std::pair<std::string, std::string> pair3("int", "1");
-		mapping[val3] = pair3;
-
-		const char* val4 = "textureSize";
-		std::pair<std::string, std::string> pair4("int", "1");
-		mapping[val4] = pair4;
-
-		const char* val5 = "textureSpeed";
-		std::pair<std::string, std::string> pair5("int", "2");
-		mapping[val5] = pair5;
 	};
 	std::string textureKey;
-	int textureRows;
-	int textureColumns;
-	int textureSize;
-	int textureSpeed;
 };
 
 struct NonIdleComponent : public Component {
@@ -211,4 +191,8 @@ struct ImmovablePlayerLimitComponent : public Component {
 
 struct FlyPlayerLimitComponent : public Component {
 	FlyPlayerLimitComponent() : Component("FlyPlayerLimit") {};
+};
+
+struct RootingComponent : public Component {
+	RootingComponent() : Component("Rooting") {};
 };

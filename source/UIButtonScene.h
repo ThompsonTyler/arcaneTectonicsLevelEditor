@@ -28,6 +28,7 @@ public:
 
 	bool currentSaveLoad = false;
 	bool saveLoadClean = false;
+	bool requestNewEnemy = false;
 
 	std::shared_ptr<cugl::Button> _infoTemplate;
 	std::shared_ptr<cugl::Node> _upTemplate;
@@ -44,6 +45,8 @@ public:
 
 	std::shared_ptr<cugl::Button> saveButton;
 	std::shared_ptr<cugl::Button> loadButton;
+	std::shared_ptr<cugl::Button> randomizeButton;
+	std::shared_ptr<cugl::Button> copyEnemyButton;
 
 	std::shared_ptr<cugl::TextField> _boardHeight;
 	std::shared_ptr<cugl::TextField> _boardWidth;
@@ -103,6 +106,7 @@ public:
 	void addBoardEnemyLabel(int amount);
 	void setupBoardEnemyLabels();
 	void setupComponentButtons();
+	void copyEnemy();
 
     /**
      * Initializes the controller contents, and starts the game
