@@ -56,7 +56,7 @@ bool ButtonScene::init(const std::shared_ptr<AssetManager>& assets) {
 		componentNames.push_back("ImmobileMovement");
 		componentNames.push_back("TeleportMovement");
 		componentNames.push_back("MeleeAttack");
-		componentNames.push_back("RangeOrthoAttack");
+		componentNames.push_back("RangedAttack");
 		componentNames.push_back("RangeDiagAttack");
 		componentNames.push_back("DuplicationOnTurn");
 		componentNames.push_back("TileMoveOnTurn");
@@ -76,7 +76,7 @@ bool ButtonScene::init(const std::shared_ptr<AssetManager>& assets) {
 		typeLayout["ImmobileMovement"] = ecs::getComponentType<ImmobileMovementComponent>();
 		typeLayout["TeleportMovement"] = ecs::getComponentType<TeleportMovementComponent>();
 		typeLayout["MeleeAttack"] = ecs::getComponentType<MeleeAttackComponent>();
-		typeLayout["RangeOrthoAttack"] = ecs::getComponentType<RangeOrthoAttackComponent>();
+		typeLayout["RangedAttack"] = ecs::getComponentType<RangeOrthoAttackComponent>();
 		typeLayout["RangeDiagAttack"] = ecs::getComponentType<RangeDiagAttackComponent>();
 		typeLayout["DuplicationOnTurn"] = ecs::getComponentType<DuplicationOnTurnComponent>();
 		typeLayout["TileMoveOnTurn"] = ecs::getComponentType<TileMoveOnTurnComponent>();
@@ -96,7 +96,7 @@ bool ButtonScene::init(const std::shared_ptr<AssetManager>& assets) {
 		baseComponents["ImmobileMovement"] = std::make_shared<Component>(ImmobileMovementComponent());
 		baseComponents["TeleportMovement"] = std::make_shared<Component>(TeleportMovementComponent());
 		baseComponents["MeleeAttack"] = std::make_shared<Component>(MeleeAttackComponent());
-		baseComponents["RangeOrthoAttack"] = std::make_shared<Component>( RangeOrthoAttackComponent());
+		baseComponents["RangedAttack"] = std::make_shared<Component>( RangeOrthoAttackComponent());
 		baseComponents["RangeDiagAttack"] = std::make_shared<Component>( RangeDiagAttackComponent());
 		baseComponents["DuplicationOnTurn"] = std::make_shared<Component>( DuplicationOnTurnComponent());
 		baseComponents["TileMoveOnTurn"] = std::make_shared<Component>( TileMoveOnTurnComponent());
@@ -880,16 +880,20 @@ void ButtonScene::loadJson(std::string levelName) {
 	std::shared_ptr<JsonValue> size = json->get("size");
 	_board.configure_size(size->getInt("width"), size->getInt("height"));
 
-	std::shared_ptr<JsonValue> tiles = json->get("tiles");
-	for (int x = 0; x < size->getInt("width"); x++) {
-		std::shared_ptr<JsonValue> singleRow = tiles->get(x);
-		std::vector<int> values = singleRow->asIntArray();
-		for (int y = 0; y < size->getInt("height"); y++) {
-			_board.tiles[x][y] = values[y];
+	//Check if old json
+	if (json->has("seed")) {
+		
+	}
+	else {
+		std::shared_ptr<JsonValue> tiles = json->get("tiles");
+		for (int x = 0; x < size->getInt("width"); x++) {
+			std::shared_ptr<JsonValue> singleRow = tiles->get(x);
+			std::vector<int> values = singleRow->asIntArray();
+			for (int y = 0; y < size->getInt("height"); y++) {
+				_board.tiles[x][y] = values[y];
+			}
 		}
 	}
-
-
 
 	std::shared_ptr<JsonValue> mika = json->get("mika");
 	Ally newMika;
@@ -919,9 +923,18 @@ void ButtonScene::loadJson(std::string levelName) {
 				compName[0] = ((char)toupper(compName.at(0)));
 			}
 
+			if (compName.compare("AttackMelee") == 0) {
+				compName = "MeleeAttack";
+			}
+
+			if (compName.compare("AttackRanged") == 0) {
+				compName = "RangedAttack";
+			}
+
 			if (compName.compare("Location") == 0) {
 				loc.mapping["x"].second = std::to_string(components->get(j)->getInt("x"));
 				loc.mapping["y"].second = std::to_string(components->get(j)->getInt("y"));
+				loc.mapping["direction"].second = std::to_string(components->get(j)->getInt("direction"));
 				newEnemy.addComponent<LocationComponent>(loc);
 			}
 			else {

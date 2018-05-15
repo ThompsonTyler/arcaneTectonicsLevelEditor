@@ -53,7 +53,7 @@ struct MeleeAttackComponent : public Component {
 };
 
 struct RangeOrthoAttackComponent : public Component {
-	RangeOrthoAttackComponent() : Component("RangeOrthoAttack") {
+	RangeOrthoAttackComponent() : Component("RangedAttack") {
 		const char* val = "horizontal";
 		std::pair<std::string, std::string> pair("bool", "1");
 		mapping[val] = pair;
@@ -107,13 +107,13 @@ struct LocationComponent : public Component {
 		std::pair<std::string, std::string> pair2("int", "1");
 		mapping[val2] = pair2;
 
-		const char* val3 = "dir";
+		const char* val3 = "direction";
 		std::pair<std::string, std::string> pair3("int", "1");
 		mapping[val3] = pair3;
 	};
 	int x;
 	int y;
-	int dir;
+	int direction;
 };
 
 struct SizeComponent : public Component {
